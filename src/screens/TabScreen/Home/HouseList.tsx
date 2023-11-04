@@ -7,6 +7,7 @@ import {
   Pressable,
   Alert,
   StyleSheet,
+  Platform,
 } from "react-native";
 import { houses } from "../../../constant/data";
 import stylesFromGlobal from "../../../styles/global.styles";
@@ -29,7 +30,7 @@ const HouseList: React.FC = () => {
             <Image
               source={{ uri: item.images[0] }}
               style={{ width: "100%", height: 270, borderRadius: 25 }}
-              resizeMode="cover"
+              resizeMode=  {Platform.OS === "ios"?"cover":"contain"}
             />
 
             <View style={{ position: "absolute", top: 20, left: 20 }}>

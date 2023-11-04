@@ -1,26 +1,22 @@
-import React, { useState, useEffect } from "react";
 import {
-  View,
+  StyleSheet,
   TouchableOpacity,
   Image,
   Text,
+  View,
   LayoutAnimation,
   Platform,
   UIManager,
-  StyleSheet,
-} from "react-native";
-import color from "../../../constant/color";
-
-if (Platform.OS === "android") {
-  UIManager.setLayoutAnimationEnabledExperimental(true);
-}
+} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import color from '../../../constant/color';
 
 interface TabButtonProps {
   activeTab: string;
   tabName: string;
-  handleTabChange: (tab: string) => void;
-  iconActive: number;
-  iconInactive: number;
+  handleTabChange: (tabName: string) => void;
+  iconActive: any; // Change to the appropriate type for your image assets
+  iconInactive: any; // Change to the appropriate type for your image assets
   primaryColor: string;
 }
 
@@ -33,42 +29,64 @@ const TabButton: React.FC<TabButtonProps> = ({
   primaryColor,
 }) => {
   const isTabActive = activeTab === tabName;
+  const [paddingVertical, setPaddingVertical] = useState<number>(isTabActive ? 25 : 0);
 
-  const handlePress = () => {
-    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut); // Add animation
-    handleTabChange(tabName);
-  };
+  useEffect(() => {
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+    setPaddingVertical(isTabActive ? 25 : 0);
+  }, [isTabActive]);
+
+  useEffect(() => {
+    if (
+      Platform.OS === 'android' &&
+      UIManager.setLayoutAnimationEnabledExperimental
+    ) {
+      UIManager.setLayoutAnimationEnabledExperimental(true);
+    }
+  }, []);
 
   return (
     <TouchableOpacity
       style={{
         ...styles.iconContainer,
-        backgroundColor: isTabActive ? primaryColor : "#fff",
-        height: 70,
+        backgroundColor: isTabActive ? primaryColor : '#fff',
+        height: 70 + paddingVertical, // Fixed height for the button
         rowGap: 5,
-        marginTop: 30,
-        shadowColor: "#000",
+        marginTop: isTabActive ? 25 : 0,
+        shadowColor: '#000',
         shadowOffset: { width: 0, height: 1 },
         shadowOpacity: 0.1,
         shadowRadius: 1,
-        elevation: 3,
+        elevation:3
       }}
-      onPress={handlePress}
-    >
+      onPress={() => handleTabChange(tabName)}>
       <Image
         source={isTabActive ? iconActive : iconInactive}
         style={{
           width: 35,
           height: 35,
+          paddingTop: paddingVertical,
+          paddingBottom: paddingVertical,
         }}
         resizeMode="contain"
       />
+
+      {isTabActive && (
+        <Text
+          style={{
+            color: '#fff',
+            fontSize: 15,
+            fontWeight: '600', // Make sure to define 'fonts' in the component or pass it as a prop.
+          }}>
+          {tabName}
+        </Text>
+      )}
     </TouchableOpacity>
   );
 };
 
 interface HomeTabButtonProps {
-  handleTabChange: (tab: string) => void;
+  handleTabChange: (tabName: string) => void;
   activeTab: string;
 }
 
@@ -76,28 +94,27 @@ const HomeTabButton: React.FC<HomeTabButtonProps> = ({ handleTabChange, activeTa
   return (
     <View
       style={{
-        alignItems: "center",
-        justifyContent: "space-around",
-        display: "flex",
-        flexDirection: "row",
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        display: 'flex',
+        flexDirection: 'row',
         columnGap: 20,
         marginTop: -7,
-      }}
-    >
+      }}>
       <TabButton
         activeTab={activeTab}
         tabName="List"
         handleTabChange={handleTabChange}
-        iconActive={require("../../../assets/icons/list-active.png")}
-        iconInactive={require("../../../assets/icons/list.png")}
+        iconActive={require('../../../assets/icons/list-active.png')}
+        iconInactive={require('../../../assets/icons/list.png')}
         primaryColor={color.primaryColor}
       />
       <TabButton
         activeTab={activeTab}
         tabName="Grid"
         handleTabChange={handleTabChange}
-        iconActive={require("../../../assets/icons/grid-active.png")}
-        iconInactive={require("../../../assets/icons/grid.png")}
+        iconActive={require('../../../assets/icons/grid-active.png')}
+        iconInactive={require('../../../assets/icons/grid.png')}
         primaryColor={color.primaryColor}
       />
 
@@ -106,32 +123,32 @@ const HomeTabButton: React.FC<HomeTabButtonProps> = ({ handleTabChange, activeTa
         activeTab={activeTab}
         tabName="List2"
         handleTabChange={handleTabChange}
-        iconActive={require("../../../assets/icons/file1.png")}
-        iconInactive={require("../../../assets/icons/file.png")}
+        iconActive={require('../../../assets/icons/file1.png')}
+        iconInactive={require('../../../assets/icons/file.png')}
         primaryColor={color.primaryColor}
       />
       <TabButton
         activeTab={activeTab}
         tabName="Grid22"
         handleTabChange={handleTabChange}
-        iconActive={require("../../../assets/icons/draw1.png")}
-        iconInactive={require("../../../assets/icons/draw.png")}
+        iconActive={require('../../../assets/icons/draw1.png')}
+        iconInactive={require('../../../assets/icons/draw.png')}
         primaryColor={color.primaryColor}
       />
     </View>
   );
 };
 
+export default HomeTabButton;
+
 const styles = StyleSheet.create({
   iconContainer: {
     width: 70,
     height: 70,
     padding: 10,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
     borderRadius: 10,
   },
 });
-
-export default HomeTabButton;

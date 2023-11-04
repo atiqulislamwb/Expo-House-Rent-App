@@ -56,10 +56,10 @@ const HouseDetails= ({ route }:{route:any}) => {
 
   return (
     <View style={{ flex: 1, backgroundColor: color.backgroundColor }}>
-      <View style={{ width: '100%', height: 420 }}>
+      <View style={{ width: '100%', height: "48%" }}>
         {/* Swiper Header Button */}
         <View
-          style={{ position: 'absolute', top: Platform.OS === "ios"? 60:30, left: 0, right: 0, zIndex: 2 }}>
+          style={{ position: 'absolute', top: Platform.OS === "ios"? 57:20, left: 0, right: 0, zIndex: 2 }}>
           <HouseHeader />
         </View>
 
@@ -72,7 +72,7 @@ const HouseDetails= ({ route }:{route:any}) => {
           activeDotColor={color.primaryColor}
           paginationStyle={{
             position: 'absolute',
-            bottom: 130,
+            bottom: 100,
           }}>
           {data?.images?.map((item:any, i:any) => (
             <View key={i}>

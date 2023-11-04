@@ -222,6 +222,7 @@ const HouseContent: React.FC<HouseContentProps> = ({ item }) => {
               fontWeight: '500',
               fontSize: 11,
               marginTop: 13,
+              paddingBottom:100
             }}>
             {item?.description}
           </Text>

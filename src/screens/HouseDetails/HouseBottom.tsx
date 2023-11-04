@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View ,Image} from "react-native";
+import { StyleSheet, Text, View ,Image, Platform} from "react-native";
 import React from "react";
 import { PrimaryButton } from "../../components/Button";
 import stylesFromGlobal from "../../styles/global.styles";
@@ -9,7 +9,7 @@ const HouseBottom = ({ item }:{item:any}) => {
     <View
       style={{
         paddingHorizontal: 45,
-        paddingVertical: 15,
+        paddingVertical: Platform.OS === "ios"? 15:10,
         backgroundColor: "#fff",
         borderRadius: 20,
       }}
