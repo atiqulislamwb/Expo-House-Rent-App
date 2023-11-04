@@ -131,6 +131,7 @@ const TabButton = ({
           style={{
             color: "#fff",
             fontSize: 15,
+            fontWeight: "600",
           }}
         >
           {tabName}

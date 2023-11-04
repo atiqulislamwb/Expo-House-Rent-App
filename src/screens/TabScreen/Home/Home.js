@@ -27,6 +27,8 @@ const Home = () => {
           style={{
             ...stylesFromGlobal.header1,
             color: color.subHeadingColor,
+            fontSize: 17,
+            fontWeight: "400",
           }}
         >
           Hello Eddie!
@@ -34,7 +36,9 @@ const Home = () => {
         <Text
           style={{
             ...stylesFromGlobal.header1,
-            fontSize: 19,
+            fontSize: 18,
+            fontWeight: "500",
+            marginTop: 2,
           }}
         >
           Start looking for your house

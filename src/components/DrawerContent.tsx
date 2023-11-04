@@ -1,14 +1,15 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import color from '../constant/color';
 
-const DrawerContent:React.FC = () => {
+const DrawerContent: React.FC = () => {
   return (
-    <View>
+    <SafeAreaView style={{ flex: 1, backgroundColor: color.backgroundColor }}>
       <Text>DrawerContent</Text>
-    </View>
-  )
-}
+    </SafeAreaView>
+  );
+};
 
-export default DrawerContent
+export default DrawerContent;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});

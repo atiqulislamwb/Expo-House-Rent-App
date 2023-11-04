@@ -90,7 +90,7 @@ const HouseList = () => {
                   <Text
                     style={{
                       ...stylesFromGlobal.header1,
-
+                      fontWeight: "500",
                       fontSize: 18,
                     }}
                   >
@@ -114,6 +114,7 @@ const HouseList = () => {
                       style={{
                         ...stylesFromGlobal.header1,
                         fontSize: 10,
+                        fontWeight: "500",
                       }}
                     >
                       {item?.postedName}
