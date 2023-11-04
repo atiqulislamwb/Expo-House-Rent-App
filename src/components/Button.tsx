@@ -96,7 +96,8 @@ const styles = StyleSheet.create({
     paddingHorizontal:30,
   },
   buttonText: {
-    fontSize: 15,
+    fontSize: 14,
     color: "#fff",
+    fontWeight:"500"
   },
 });

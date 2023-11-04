@@ -17,7 +17,7 @@ import Favourite from "./TabScreen/Favourite/Favourite";
 import Message from "./TabScreen/Message/Message";
 import DrawerContent from "../components/DrawerContent";
 
-const TabView: React.FC = () => {
+const TabView = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<string>("Home");
 

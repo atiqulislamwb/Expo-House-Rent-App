@@ -35,7 +35,7 @@ const Location = ({ arrow, font }:{arrow:string, font:string}) => {
         <TouchableOpacity style={{}}>
           <Image
             source={require("../assets/icons/down-arrow.png")}
-            style={{ width: 18, height: 18 }}
+            style={{ width: 15, height: 15, marginLeft:2 }}
             resizeMode="contain"
           />
         </TouchableOpacity>

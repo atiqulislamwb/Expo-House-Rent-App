@@ -41,8 +41,10 @@ const HouseContent: React.FC<HouseContentProps> = ({ item }) => {
           <Text
             style={{
               ...stylesFromGlobal.header1,
-              fontSize: 20,
+              fontSize: 21,
+              fontWeight:"700",
               marginTop: 4,
+              letterSpacing:0.4
             }}>
             {item?.name}
           </Text>
@@ -241,9 +243,10 @@ const styles = StyleSheet.create({
   },
   quantityText: {
     ...stylesFromGlobal.description,
-    fontSize: 14,
+    fontSize: 15,
     color: '#7A7A7A',
-    marginTop: 2,
+    marginTop: 4,
+    fontWeight:"600",
   },
   buttonContainer: {
     alignItems: 'center',

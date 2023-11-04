@@ -35,7 +35,7 @@ type HouseDetailsRouteProp = {
 
 const { width: screenWidth } = Dimensions.get('window');
 
-const HouseDetails: React.FC<HouseDetailsRouteProp> = ({ route }) => {
+const HouseDetails= ({ route }:{route:any}) => {
   const { data } = route.params;
 
   const translateY = useSharedValue(200); // Initial translateY value

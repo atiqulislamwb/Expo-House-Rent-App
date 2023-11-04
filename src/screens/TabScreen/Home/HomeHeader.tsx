@@ -7,10 +7,7 @@ const HomeHeader: React.FC = () => {
   return (
     <View
       style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection: 'row',
+        ...styles.centerRow,
         paddingTop: 6,
       }}>
       <View style={{ width: '15%' }}>
@@ -23,13 +20,10 @@ const HomeHeader: React.FC = () => {
       <View style={{ width: '70%' }}>
         <Location arrow="true" font="false" />
       </View>
-      <View style={{ width: '15%' }}>
+      <View style={{ width: '15%', alignContent:"flex-start" }}>
         <View
           style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexDirection: 'row',
+            ...styles.centerRow,
             columnGap: 15,
           }}>
           <TouchableOpacity style={{}}>
@@ -57,4 +51,12 @@ const HomeHeader: React.FC = () => {
 
 export default HomeHeader;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+
+  centerRow:{
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+  }
+});
