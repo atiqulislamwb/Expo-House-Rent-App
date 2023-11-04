@@ -11,6 +11,10 @@ import {
 } from "react-native";
 import color from "../../../constant/color";
 
+if (Platform.OS === "android") {
+  UIManager.setLayoutAnimationEnabledExperimental(true);
+}
+
 interface TabButtonProps {
   activeTab: string;
   tabName: string;
@@ -29,59 +33,36 @@ const TabButton: React.FC<TabButtonProps> = ({
   primaryColor,
 }) => {
   const isTabActive = activeTab === tabName;
-  const [paddingVertical, setPaddingVertical] = useState(isTabActive ? 25 : 0);
 
-  useEffect(() => {
-    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-    setPaddingVertical(isTabActive ? 25 : 0);
-  }, [isTabActive]);
-
-  useEffect(() => {
-    if (
-      Platform.OS === "android" &&
-      UIManager.setLayoutAnimationEnabledExperimental
-    ) {
-      UIManager.setLayoutAnimationEnabledExperimental(true);
-    }
-  }, []);
+  const handlePress = () => {
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut); // Add animation
+    handleTabChange(tabName);
+  };
 
   return (
     <TouchableOpacity
       style={{
         ...styles.iconContainer,
         backgroundColor: isTabActive ? primaryColor : "#fff",
-        height: 70 + paddingVertical, // Fixed height for the button
+        height: 70,
         rowGap: 5,
-        marginTop: isTabActive ? 25 : 0,
+        marginTop: 30,
         shadowColor: "#000",
         shadowOffset: { width: 0, height: 1 },
         shadowOpacity: 0.1,
         shadowRadius: 1,
+        elevation: 3,
       }}
-      onPress={() => handleTabChange(tabName)}
+      onPress={handlePress}
     >
       <Image
         source={isTabActive ? iconActive : iconInactive}
         style={{
           width: 35,
           height: 35,
-          paddingTop: paddingVertical,
-          paddingBottom: paddingVertical,
         }}
         resizeMode="contain"
       />
-
-      {isTabActive && (
-        <Text
-          style={{
-            color: "#fff",
-            fontSize: 15,
-            fontWeight: "600",
-          }}
-        >
-          {tabName}
-        </Text>
-      )}
     </TouchableOpacity>
   );
 };

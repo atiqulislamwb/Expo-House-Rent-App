@@ -67,7 +67,7 @@ const TabView = () => {
       >
         {/* Page Content */}
         <ScrollView
-          style={{ marginTop: 55, paddingBottom: 150 }}
+          style={{ marginTop: Platform.OS === "android"? 10 : 55, paddingBottom: 150 }}
           showsVerticalScrollIndicator={false}
         >
           {activeTab === "Home" && <Home />}

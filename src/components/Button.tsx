@@ -1,6 +1,6 @@
 import React from "react";
 
-import { View, Image, TouchableOpacity,Text, ImageSourcePropType,StyleSheet,  ViewStyle, ImageStyle } from 'react-native';
+import { View, Image,Platform, TouchableOpacity,Text, ImageSourcePropType,StyleSheet,  ViewStyle, ImageStyle } from 'react-native';
 
 interface IconButtonProps {
   onPress: () => void;
@@ -29,6 +29,9 @@ export const IconButton: React.FC<IconButtonProps> = ({
         height: buttonSize,
         backgroundColor,
         ...containerStyle,
+        shadowColor:  "#000",
+        shadowOpacity:0.2,
+        elevation:3
       }}
       onPress={onPress}
     >

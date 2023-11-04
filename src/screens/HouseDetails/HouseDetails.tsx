@@ -7,6 +7,7 @@ import {
   Dimensions,
   TouchableOpacity,
   ScrollView,
+  Platform,
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 import Animated, {
@@ -58,7 +59,7 @@ const HouseDetails= ({ route }:{route:any}) => {
       <View style={{ width: '100%', height: 420 }}>
         {/* Swiper Header Button */}
         <View
-          style={{ position: 'absolute', top: 60, left: 0, right: 0, zIndex: 2 }}>
+          style={{ position: 'absolute', top: Platform.OS === "ios"? 60:30, left: 0, right: 0, zIndex: 2 }}>
           <HouseHeader />
         </View>
 
