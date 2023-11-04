@@ -1,18 +1,17 @@
-import { StyleSheet, Text, View } from "react-native";
 import React, { useState } from "react";
+import { View, Text, StyleSheet } from "react-native";
 import HomeHeader from "./HomeHeader";
 import stylesFromGlobal from "../../../styles/global.styles";
 import color from "../../../constant/color";
-
 import Search from "../../../components/Search";
 import HomeTabButton from "./HomeTabButton";
 import HouseList from "./HouseList";
 import HouseGrid from "./HouseGrid";
 
-const Home = () => {
-  const [activeTab, setActiveTab] = useState("List");
+const Home: React.FC = () => {
+  const [activeTab, setActiveTab] = useState<string>("List");
 
-  const handleTabChange = (tab) => {
+  const handleTabChange = (tab: string) => {
     setActiveTab(tab);
   };
 
@@ -50,10 +49,7 @@ const Home = () => {
 
       {/* Home Tab Button and content */}
       <View style={{ marginTop: 0 }}>
-        <HomeTabButton
-          activeTab={activeTab}
-          handleTabChange={handleTabChange}
-        />
+        <HomeTabButton activeTab={activeTab} handleTabChange={handleTabChange} />
         <View style={{ marginTop: 10 }}>
           {activeTab === "List" && <HouseList />}
           {activeTab === "Grid" && <HouseGrid />}

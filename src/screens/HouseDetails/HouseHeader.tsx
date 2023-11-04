@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View,Image } from "react-native";
 import React from "react";
 import { IconButton } from "../../components/Button";
 
 import { useNavigation } from "@react-navigation/native";
 
-const HouseHeader = () => {
+const HouseHeader:React.FC = () => {
   const navigation = useNavigation();
   return (
     <View

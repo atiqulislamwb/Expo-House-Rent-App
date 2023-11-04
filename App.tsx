@@ -6,8 +6,9 @@ import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {ContextProvider} from './src/context/context';
 import TabView from './src/screens/TabView';
-import HouseDetails from './src/screens/HouseDetails/HouseDetails';
+
 import FlashMessage from "react-native-flash-message";
+import HouseDetails from './src/screens/HouseDetails/HouseDetails';
 
 const Stack = createNativeStackNavigator();
 

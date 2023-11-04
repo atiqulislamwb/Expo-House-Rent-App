@@ -1,29 +1,33 @@
+import React from "react";
 import {
-  StyleSheet,
-  Text,
+  View,
   TouchableOpacity,
   Image,
-  View,
+  Text,
   Pressable,
   Alert,
+  StyleSheet,
 } from "react-native";
-import React from "react";
 import { houses } from "../../../constant/data";
 import stylesFromGlobal from "../../../styles/global.styles";
-import { showMessage, hideMessage } from "react-native-flash-message";
+import { showMessage } from "react-native-flash-message";
 import Location from "../../../components/Location";
 import color from "../../../constant/color";
 import { useNavigation } from "@react-navigation/native";
 import { IconButton } from "../../../components/Button";
-const HouseList = () => {
+import {House} from "../../../constant/data"
+
+
+const HouseList: React.FC = () => {
   const navigation = useNavigation();
+
   return (
     <View style={{ marginTop: 10 }}>
       <View>
         {houses?.map((item, i) => (
           <View key={i} style={{ marginTop: i == 0 ? 0 : 20 }}>
             <Image
-              source={{ uri: item?.images[0] }}
+              source={{ uri: item.images[0] }}
               style={{ width: "100%", height: 270, borderRadius: 25 }}
               resizeMode="cover"
             />
@@ -37,14 +41,12 @@ const HouseList = () => {
                   borderRadius: 30,
                 }}
               >
-                <Location font="true" />
+                <Location font="true" arrow="false" />
               </View>
             </View>
 
             <Pressable
-              onPress={() =>
-                navigation.navigate("HouseDetails", { data: item })
-              }
+              onPress={() => navigation.navigate("HouseDetails", { data: item })}
               style={{
                 backgroundColor: "#fff",
                 borderRadius: 20,
@@ -55,13 +57,12 @@ const HouseList = () => {
                 shadowRadius: 1,
               }}
             >
-              {/* favourite button */}
-
+              {/* favorite button */}
               <View style={{ position: "absolute", top: -22, right: 30 }}>
                 <IconButton
                   onPress={() => {
                     showMessage({
-                      message: item?.name,
+                      message: item.name,
                       description: "Saved to favorites",
                       type: "success",
                       icon: "success",
@@ -94,7 +95,7 @@ const HouseList = () => {
                       fontSize: 18,
                     }}
                   >
-                    {item?.name}
+                    {item.name}
                   </Text>
                   <View
                     style={{
@@ -106,7 +107,7 @@ const HouseList = () => {
                     }}
                   >
                     <Image
-                      source={item?.profileImageURL}
+                      source={{ uri: item.profileImageURL }}
                       style={{ width: 25, height: 25, borderRadius: 25 }}
                       resizeMode="cover"
                     />
@@ -117,7 +118,7 @@ const HouseList = () => {
                         fontWeight: "500",
                       }}
                     >
-                      {item?.postedName}
+                      {item.postedName}
                     </Text>
                   </View>
                   <View style={{ marginTop: 5, marginLeft: 3 }}>
@@ -133,7 +134,7 @@ const HouseList = () => {
                       fontWeight: "700",
                     }}
                   >
-                    ${item?.price} usd
+                    ${item.price} usd
                   </Text>
                   <View
                     style={{
@@ -146,59 +147,29 @@ const HouseList = () => {
                       marginLeft: -10,
                     }}
                   >
-                    <View
-                      style={{
-                        ...styles.quantityContainer,
-                      }}
-                    >
+                    <View style={styles.quantityContainer}>
                       <Image
                         source={require("../../../assets/icons/bed.png")}
                         style={{ width: 13, height: 13 }}
                         resizeMode="cover"
                       />
-                      <Text
-                        style={{
-                          ...styles.quantityText,
-                        }}
-                      >
-                        {item?.bed}
-                      </Text>
+                      <Text style={styles.quantityText}>{item.bed}</Text>
                     </View>
-                    <View
-                      style={{
-                        ...styles.quantityContainer,
-                      }}
-                    >
+                    <View style={styles.quantityContainer}>
                       <Image
                         source={require("../../../assets/icons/basin.png")}
                         style={{ width: 13, height: 13 }}
                         resizeMode="cover"
                       />
-                      <Text
-                        style={{
-                          ...styles.quantityText,
-                        }}
-                      >
-                        {item?.washroom}
-                      </Text>
+                      <Text style={styles.quantityText}>{item.washroom}</Text>
                     </View>
-                    <View
-                      style={{
-                        ...styles.quantityContainer,
-                      }}
-                    >
+                    <View style={styles.quantityContainer}>
                       <Image
                         source={require("../../../assets/icons/chimney.png")}
                         style={{ width: 13, height: 13 }}
                         resizeMode="cover"
                       />
-                      <Text
-                        style={{
-                          ...styles.quantityText,
-                        }}
-                      >
-                        {item?.kitchen}
-                      </Text>
+                      <Text style={styles.quantityText}>{item.kitchen}</Text>
                     </View>
                   </View>
                 </View>
@@ -222,13 +193,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   quantityText: {
-    ...stylesFromGlobal.subHeadingColor,
+    ...stylesFromGlobal.description,
     fontSize: 12,
     color: "#7A7A7A",
   },
 });
 
-const Star = ({ item }) => {
+const Star: React.FC<{ item: House }> = ({ item }) => {
   return (
     <View
       style={{
@@ -269,7 +240,7 @@ const Star = ({ item }) => {
           fontSize: 10,
         }}
       >
-        {item?.options} options
+        {item.options} options
       </Text>
     </View>
   );

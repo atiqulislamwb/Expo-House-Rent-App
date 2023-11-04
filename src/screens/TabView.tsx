@@ -1,3 +1,4 @@
+import React, { useState, useRef } from "react";
 import {
   SafeAreaView,
   Animated,
@@ -7,24 +8,22 @@ import {
   Text,
   View,
   TouchableOpacity,
-  ScrollView,
+  ScrollView,Platform
 } from "react-native";
-import React, { useState, useRef } from "react";
 import { Drawer } from "react-native-drawer-layout";
 import color from "../constant/color";
 import Home from "./TabScreen/Home/Home";
 import Favourite from "./TabScreen/Favourite/Favourite";
 import Message from "./TabScreen/Message/Message";
-
 import DrawerContent from "../components/DrawerContent";
 
-const TabView = () => {
-  const [open, setOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState("Home");
+const TabView: React.FC = () => {
+  const [open, setOpen] = useState<boolean>(false);
+  const [activeTab, setActiveTab] = useState<string>("Home");
 
   const scaleValue = useRef(new Animated.Value(1)).current;
 
-  const handleTabChange = (tab) => {
+  const handleTabChange = (tab: string) => {
     setActiveTab(tab);
     Animated.spring(scaleValue, {
       toValue: 1.2,
@@ -39,7 +38,7 @@ const TabView = () => {
     });
   };
 
-  const iconAnimationStyle = (tab) => {
+  const iconAnimationStyle = (tab: string) => {
     if (activeTab === tab) {
       return {
         transform: [{ scale: scaleValue }],
@@ -79,9 +78,7 @@ const TabView = () => {
         <View style={{ position: "absolute", bottom: 0, left: 0, right: 0 }}>
           <View style={styles.wrapper}>
             <TouchableOpacity
-              style={{
-                ...styles.iconContainer,
-              }}
+           
               onPress={() => handleTabChange("Home")}
             >
               <Animated.Image
@@ -96,7 +93,7 @@ const TabView = () => {
             </TouchableOpacity>
 
             <TouchableOpacity
-              style={styles.iconContainer}
+          
               onPress={() => handleTabChange("Favourite")}
             >
               <Animated.Image
@@ -114,7 +111,7 @@ const TabView = () => {
             </TouchableOpacity>
 
             <TouchableOpacity
-              style={styles.iconContainer}
+     
               onPress={() => handleTabChange("Message")}
             >
               <View style={{}}>
@@ -137,7 +134,7 @@ const TabView = () => {
             </TouchableOpacity>
 
             <TouchableOpacity
-              style={styles.iconContainer}
+           
               onPress={() => {
                 setOpen((prevOpen) => !prevOpen);
               }}

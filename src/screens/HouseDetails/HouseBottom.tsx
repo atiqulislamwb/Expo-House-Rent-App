@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View ,Image} from "react-native";
 import React from "react";
 import { PrimaryButton } from "../../components/Button";
 import stylesFromGlobal from "../../styles/global.styles";
 import color from "../../constant/color";
 
-const HouseBottom = ({ item }) => {
+const HouseBottom = ({ item }:{item:any}) => {
   return (
     <View
       style={{
