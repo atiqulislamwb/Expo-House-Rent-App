@@ -163,18 +163,19 @@ export default TabView;
 
 const styles = StyleSheet.create({
   wrapper: {
-    left: 0,
-    right: 0,
     display: "flex",
     alignItems: "center",
     justifyContent: "space-around",
     flexDirection: "row",
     padding: 5,
     height: Platform.OS === "ios" ? 70 : 60,
-    backgroundColor: "white",
+    backgroundColor: "#fff",
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
-    paddingBottom: 17,
+    paddingBottom: Platform.OS === "ios"? 17:5,
     paddingHorizontal: 20,
+    shadowColor:  "#000",
+    shadowOpacity:0.2,
+    elevation:3
   },
 });

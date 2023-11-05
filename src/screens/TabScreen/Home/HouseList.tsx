@@ -52,10 +52,9 @@ const HouseList: React.FC = () => {
                 backgroundColor: "#fff",
                 borderRadius: 20,
                 marginTop: -40,
-                shadowColor: "#000",
-                shadowOffset: { width: 0.2, height: 0.2 },
-                shadowOpacity: 0.1,
-                shadowRadius: 1,
+                shadowColor:  "#000",
+                shadowOpacity:0.2,
+                elevation:3
               }}
             >
               {/* favorite button */}

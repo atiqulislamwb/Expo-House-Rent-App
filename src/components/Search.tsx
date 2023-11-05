@@ -18,10 +18,9 @@ const Search: React.FC<SearchProps> = () => {
         paddingVertical: 5,
         borderRadius: 10,
         shadowColor: '#000',
-        shadowOffset: { width: 0.1, height: 0.1 },
         shadowOpacity: 0.1,
         shadowRadius: 1,
-        elevation: 4,
+        elevation: 1,
       }}
     >
       <View
