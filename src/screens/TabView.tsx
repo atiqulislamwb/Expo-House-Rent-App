@@ -176,6 +176,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     shadowColor:  "#000",
     shadowOpacity:0.2,
-    elevation:3
+    elevation:2
   },
 });

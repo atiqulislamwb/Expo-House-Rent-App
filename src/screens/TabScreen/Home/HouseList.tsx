@@ -54,7 +54,7 @@ const HouseList: React.FC = () => {
                 marginTop: -40,
                 shadowColor:  "#000",
                 shadowOpacity:0.2,
-                elevation:3
+                elevation:1
               }}
             >
               {/* favorite button */}
